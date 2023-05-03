@@ -1,0 +1,28 @@
+<?php
+$str=<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<bookInfo>
+	<book>
+		<bookno>1</bookno>
+		<bookname>Java</bookname>
+		<authorname>Balguru Swami</authorname>
+		<price>250</price>
+		<year>2006</year>
+	</book>
+	<book>
+		<bookno>2</bookno>
+		<bookname>PHP</bookname>
+		<authorname>S.KAdam</authorname>
+		<price>350</price>
+		<year>2009</year>
+	</book>
+</bookInfo>
+XML;
+$fname="seta3.xml";
+$fp=fopen($fname,"w");
+fwrite($fp,$fstr);
+fclose($fp);
+echo"created filename is".$fname;
+?>
+
+

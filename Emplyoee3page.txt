@@ -1,0 +1,45 @@
+SETB2.HTML
+<html><head><title>Employee Details</title></head>
+<body>
+<form action="ass1setb2.php" method="get">
+<h2>Employee No:<input type="text" name="eno"><br>
+<h2>Employee Name:<input type="text" name="ename"><br>
+<h2>Employee Address:<input type="text" name="addr"><br><br>
+<input type=Submit value=Submit>
+</h2>
+</form>
+</body>
+</html>
+
+SETB2.PHP
+<?php
+session_start();
+$_SESSION['eno']=$_GET['eno'];
+$_SESSION['ename']=$_GET['ename'];
+$_SESSION['addr']=$_GET['addr'];
+?>
+<html><body>
+<form action=ass1setb3.php>
+Enter basic:<input type=text name=basic><br><br>
+Enter DA:<input type=text name=da><br><br>
+Enter HRA:<input type=text name=hra><br><br>
+<input type=submit name=Next>
+</form>
+</body></html>
+
+ass1setb3.php
+<?php
+session_start();
+$basic=$_GET['basic'];
+$da=$_GET['da'];
+$hra=$_GET['hra'];
+echo "<h1>Employee Details</h1><br><br>";
+echo "Employee No:$_SESSION[eno]<br>";
+echo "Employee Name:$_SESSION[ename]<br>";
+echo "Employee Address:$_SESSION[addr]<br><br>";
+$total=$basic+$da+$hra;
+echo "Basic:$basic<br>";
+echo "DA:$da<br>";
+echo "HRA:$hra<br><br>";
+echo "Total:$total";
+?>

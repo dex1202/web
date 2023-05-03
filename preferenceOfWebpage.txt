@@ -1,0 +1,52 @@
+SETA2.HTML
+<html>
+	<head>
+		<title>
+			WEB PAGES
+		</title>
+	</head>
+	<body>
+		<form action="seta2.php" method="GET">
+		Message<input type="text" name="message"><br>
+		Font Style<br>
+		Bold<input type="radio" name="a"><br>
+		Italic<input type="radio" name="a"><br><br>
+		Font Size<br>
+		12<input type="radio" name="b"><br>
+		14<input type="radio" name="b"><br><br>
+		Font Color<br>
+		Red<input type="radio" name="c"><br>
+		Blue<input type="radio" name="c"><br><br>
+		Background Color<br>
+		Blue<input type="radio" name="d"><br>
+		Black<input type="radio" name="d"><br><br>
+		<input type="submit" name="submit">
+		</form>
+	</body>
+</html>
+
+SETA2.PHP
+<?php
+setcookie('message',$_GET['message']);
+setcookie('st',$_GET['a']);
+setcookie('size',$_GET['b']);
+setcookie('color',$_GET['c']);
+setcookie('bcolor',$_GET['d']);
+echo "<br> Message is ".$_COOKIE['message'];
+echo "<br> Style is ".$_COOKIE['st'];
+echo "<br> Size is ".$_COOKIE['size'];
+echo "<br> Color is ".$_COOKIE['color'];
+echo "<br> Background Color is ".$_COOKIE['bcolor'];
+echo "<form action=seta2add.php method=GET>";
+echo "<input type=submit value=next>";
+echo "</form>"
+?>
+
+SETA2ADD.PHP
+<?php
+echo "<body bgcolor=$_COOKIE['bcolor']>";
+echo "<font style=$_COOKIE['st']
+	    color=$_COOKIE['color']
+	    size=$_COOKIE['size']>
+$_COOKIE['message']</font>";
+?>

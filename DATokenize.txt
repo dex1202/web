@@ -1,0 +1,38 @@
+from nltk.tokenize import sent_tokenize,word_tokenize
+
+paragraph_text="""
+College Life is one of the most remarkable and lovable times of an individual's life. Unlike School Life, College Life has a different experience, and a person needs to have this experience in his/her life. College Life exposes us to whole new experiences which we always dream of experiencing after our school life.
+"""
+
+tokenized_text_data=sent_tokenize(paragraph_text)
+tokenized_words=word_tokenize(paragraph_text)
+print("Tokenized Sentences:\n",tokenized_text_data,"\n")
+print("Tokenized Words:\n",tokenized_words,"\n")
+
+from nltk.probability import FreqDist
+frequency_distribution=FreqDist(tokenized_words)
+print(frequency_distribution)
+
+import matplotlib.pyplot as plt
+frequency_distribution.plot(32,cumulative=False)
+plt.show()
+
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stop_words_data=set(stopwords.words("english"))
+print(stop_words_data)
+
+filtered_words_list=[]
+for words in tokenized_words:
+    if words not in stop_words_data:
+        filtered_words_list.append(words)
+
+print("Tokenized Words:\n",tokenized_words,"\n")
+print("Filtered Words:\n",filtered_words_list,"\n")
+
+from wordcloud import WordCloud, get_single_color_func
+word_cloud= WordCloud(collocations='false', background_color='white').generate(paragraph_text)
+plt.imshow(word_cloud,interpolation='bilinear')
+plt.axis("off")
+plt.show()

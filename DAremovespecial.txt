@@ -1,0 +1,51 @@
+import nltk
+nltk.download('all')
+import re
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize,sent_tokenize
+
+text="""
+College Life is one of the most remarkable and lovable times of an individual's life. Unlike School Life, College Life has a different experience, and a person needs to have this experience in his/her life. College Life exposes us to whole new experiences which we always dream of experiencing after our school life.
+"""
+print(text)
+print("\n\n")
+
+text=re.sub(r'\[[0-9]{}*]',' ',text)
+
+formatted_text=re.sub('[^a-zA-Z]',' ',text)
+print(formatted_text)
+print("\n\n")
+
+stopWords=set(stopwords.words("english"))
+words=word_tokenize(formatted_text)
+
+wordfreq={}
+for word in words:
+    if word in stopWords:
+        continue
+    if word in wordfreq:
+        wordfreq[word] +=1
+    else:
+        wordfreq[word] = 1
+
+
+maximum_frequency=max(wordfreq.values())
+for word in wordfreq.keys():
+    wordfreq[word] = (wordfreq[word]/maximum_frequency)
+
+sentences = sent_tokenize(text)
+sentenceValue= {}
+for sentence in sentences:
+    for word,freq in wordfreq.items():
+        if word in sentence.lower():
+            if sentence in sentenceValue:
+                sentenceValue[sentence] +=freq
+            else:
+                sentenceValue[sentence] = freq
+
+
+import heapq
+summary=' '
+summary_sentence = heapq.nlargest(5,sentenceValue, key=sentenceValue.get)
+summary=' '.join(summary_sentence)
+print(summary)

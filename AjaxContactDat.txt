@@ -1,0 +1,46 @@
+.PHP
+<?php
+$res=fopen("contact.dat","r");
+echo"<table border=1><br>";
+echo"<br><b>Contact Details</b>";
+while($data=fgets($res))
+{
+	$arr=explode(" ",$data);
+	echo"<tr><td>$arr[0]</td><td>$arr[1]</td><td>$arr[2]</td><td>$arr[3]</td></tr>";
+}
+echo"</table>";
+?>
+
+.HTML
+<html>
+	<body>
+		<script type="text/javascript">
+			function showDetails()
+			{
+				var x=new XMLHttpRequest();
+				
+				x.open("GET","A4setA1.php",true);
+				x.send();
+				x.onreadystatechange=function()
+				{
+					if(x.readyState==4 && x.status==200)
+					{
+						document.getElementById("res").innerHTML=x.responseText;
+					}
+				}
+			}
+		</script>
+		<form>
+		<h2>Click on button to show contact details:</h2>
+		<input type=button onClick="showDetails()" value="Print">
+		<span id="res">
+		</span></form>
+	</body>
+</html>
+
+
+Contact.dat
+Sr Name Residence_Number Mobile_Number Relation
+1 shivam 101 9876543211 mother
+2 adhya 407 6754323214 sister
+3 ritik 564 4321234567 niece

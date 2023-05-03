@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="item.css"?>
+<itemlist>
+	<item>
+	<itemname>Pen</itemname>
+	<itemprice>10</itemprice>
+	<quantity>5</quantity>
+        </item>
+
+        <item>
+	<itemname>Pencil</itemname>
+	<itemprice>20</itemprice>
+	<quantity>10</quantity>
+	</item>
+	
+	<item>
+	<itemname>Scale</itemname>
+	<itemprice>25</itemprice>
+	<quantity>5</quantity>
+	</item>
+	
+	<item>
+	<itemname>Eraser</itemname>
+	<itemprice>20</itemprice>
+	<quantity>3</quantity>
+	</item>
+	
+	<item>
+	<itemname>Sharpner</itemname>
+	<itemprice>10</itemprice>
+	<quantity>5</quantity>
+	</item>
+</itemlist>
